@@ -7,7 +7,7 @@ services:
     environment:
         POSTGRES_USER: jee
         POSTGRES_PASSWORD: jee
-        POSTGRES_DB: orderentry
+        POSTGRES_DB: orders
     ports:
       - "5432:5432"
     networks:

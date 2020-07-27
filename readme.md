@@ -12,7 +12,7 @@ docker-compose -p jee up
 
 
 jdbc to postgres db
-jdbc:postgresql://127.0.0.1:5432/orderentry
+jdbc:postgresql://127.0.0.1:5432/orders
 
 
 
