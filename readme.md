@@ -6,6 +6,15 @@ contains:
 - domain application
 
 
+## Docker images
+start docker-compose
+docker-compose -p jee up
+
+
+jdbc to postgres db
+jdbc:postgresql://127.0.0.1:5432/orderentry
+
+
 
 ## Jaeger and ELK:
 https://medium.com/jaegertracing/jaeger-elasticsearch-and-kibana-7ecb846137b6
