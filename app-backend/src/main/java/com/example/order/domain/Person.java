@@ -1,10 +1,14 @@
 package com.example.order.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
-@Getter @Setter @Builder
+@Getter @Setter @Builder @ToString
+@NoArgsConstructor @AllArgsConstructor
 public class Person {
     private String id;
     private String name;

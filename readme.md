@@ -1,4 +1,4 @@
-Demo project for distrebuted tracing
+Demo project for distributed tracing
 
 contains:
 - docker configuration docker-compose.yml
@@ -7,7 +7,3 @@ contains:
     -- jäger monitoring container
 - app application 
 - domain application
-
-
-
-
