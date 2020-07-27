@@ -1,0 +1,5 @@
+embed-server
+batch
+    /system-property=stage:add(value=local)
+run-batch
+quit

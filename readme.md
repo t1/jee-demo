@@ -7,8 +7,10 @@ contains:
 
 
 ## Docker images
-start docker-compose
-docker-compose -p jee up
+
+Start docker-compose:
+
+`docker-compose up --build`
 
 
 jdbc to postgres db
