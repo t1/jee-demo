@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:9
+    ports:
+      - "5432:5432"
+    networks:
+      - network
+
+  wildfly20:
+    image: wildfly20
+    depends_on:
+      - postgres9
+    environment:
+      DEBUG: ""
+      SKIP_DB_CONFIG: "true"
+    ports:
+      - "8080:8080"
+      - "9990:9990"
+    networks:
+      - network
+
+networks:
+  network:
+    driver: bridge
+    ipam:
+      driver: default
+
