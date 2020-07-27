@@ -1,17 +1,13 @@
 Demo project for distributed tracing
 
 contains:
-- docker configuration docker-compose.yml
-    -- wildfly 20
-    -- postgres
-    -- jäger monitoring container
-- app application 
+- docker-compose.yml
+- app-backend 
 - domain application
 
 
 
-Jaeger and ELK:
-================================================================================
+## Jaeger and ELK:
 https://medium.com/jaegertracing/jaeger-elasticsearch-and-kibana-7ecb846137b6
 Jaeger GUI: http://localhost:16686/search
 Kibana: http://localhost:5601
