@@ -2,22 +2,35 @@ version: "3"
 
 services:
   postgres:
-    image: postgres:9
+    image: postgres
     ports:
       - "5432:5432"
     networks:
       - network
 
   wildfly20:
-    image: wildfly20
+    image: jboss/wildfly
     depends_on:
-      - postgres9
+      - postgres
     environment:
       DEBUG: ""
       SKIP_DB_CONFIG: "true"
     ports:
       - "8080:8080"
       - "9990:9990"
+    networks:
+      - network
+
+  wildfly20_app:
+    image: jboss/wildfly
+    depends_on:
+      - postgres
+    environment:
+      DEBUG: ""
+      SKIP_DB_CONFIG: "true"
+    ports:
+      - "8088:8080"
+      - "9991:9990"
     networks:
       - network
 
