@@ -3,6 +3,11 @@ version: "3"
 services:
   postgres:
     image: postgres
+    container_name: postgres_db
+    environment:
+        POSTGRES_USER: jee
+        POSTGRES_PASSWORD: jee
+        POSTGRES_DB: orderentry
     ports:
       - "5432:5432"
     networks:
@@ -18,19 +23,21 @@ services:
     ports:
       - "8080:8080"
       - "9990:9990"
+    volumes:
+      - ./widfly20/conf/standalone.xml:/wildfly/standalone/configuration/standalone.xml
     networks:
       - network
 
   wildfly20_app:
     image: jboss/wildfly
-    depends_on:
-      - postgres
     environment:
       DEBUG: ""
       SKIP_DB_CONFIG: "true"
     ports:
       - "8088:8080"
       - "9991:9990"
+    volumes:
+      - ./widfly20_app/conf/standalone.xml:/wildfly/standalone/configuration/standalone.xml
     networks:
       - network
 
