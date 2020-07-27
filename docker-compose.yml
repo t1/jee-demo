@@ -11,7 +11,7 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - network
+      - jee-demo-network
 
   domain-backend:
     image: jboss/wildfly:20.0.1.Final
@@ -26,9 +26,10 @@ services:
     volumes:
       - ./widfly20/conf/standalone.xml:/wildfly/standalone/configuration/standalone.xml
     networks:
-      - network
+      - jee-demo-network
 
   app-backend:
+    build: app-backend
     image: jboss/wildfly:20.0.1.Final
     depends_on:
     - domain-backend
@@ -38,14 +39,11 @@ services:
     ports:
       - "8081:8080"
       - "9991:9990"
-    volumes:
-      - ./widfly20_app/conf/standalone.xml:/wildfly/standalone/configuration/standalone.xml
     networks:
-      - network
+      - jee-demo-network
 
 networks:
-  network:
+  jee-demo-network:
     driver: bridge
     ipam:
       driver: default
-
