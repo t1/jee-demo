@@ -15,32 +15,36 @@ SET search_path TO orders;
 
 CREATE TABLE orders.person
 (
-  id VARCHAR PRIMARY KEY,
+  primary_key BIGSERIAL PRIMARY KEY,
+  id VARCHAR NOT NULL,
   name  VARCHAR NOT NULL
 );
 
 CREATE TABLE orders.order
 (
-  id VARCHAR PRIMARY KEY,
+  primary_key BIGSERIAL PRIMARY KEY,
+  id VARCHAR NOT NULL,
   orderDate TIMESTAMP NOT NULL,
-  persion_id VARCHAR,
-  orderItemIds text[]
-);
+  person BIGINT NOT NULL,
+  orderItem BIGINT[] NOT NULL,
+  FOREIGN KEY (person) REFERENCES orders.person (primary_key)
+); 
 
-CREATE TABLE orders.orderItem
+CREATE TABLE orders.order_item
 (
-  id VARCHAR PRIMARY KEY,
+  primary_key BIGSERIAL PRIMARY KEY,
+  id VARCHAR NOT NULL,
   ammount INT NOT NULL,
   product VARCHAR,
-  pieceCostInCent INT
+  piece_cost_in_cent INT
 );
 
 CREATE UNIQUE INDEX orders_id_index
 	on orders.order (id);
 
 
-CREATE UNIQUE INDEX orderItem_id_index
-	on orders.orderItem (id);
+CREATE UNIQUE INDEX order_item_id_index
+	on orders.order_item (id);
 
 CREATE UNIQUE INDEX person_id_index
 	on orders.person (id);
