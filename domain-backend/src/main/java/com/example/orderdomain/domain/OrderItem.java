@@ -1,7 +1,10 @@
 package com.example.orderdomain.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,12 +13,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
+@Entity(name = "order_item")
 @Getter @Setter @Builder @ToString
 @NoArgsConstructor @AllArgsConstructor
 public class OrderItem {
     @Id private long id;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id", nullable = false)
+    Order order;
+
     private int count;
+
     private String product;
+
+    @Column(name = "piece_cost_in_cent")
     private int pieceCostInCent;
 }

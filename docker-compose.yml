@@ -3,7 +3,6 @@ version: "3.8"
 services:
   db:
     image: postgres
-    container_name: postgres_db
     environment:
         POSTGRES_USER: jee
         POSTGRES_PASSWORD: jee
