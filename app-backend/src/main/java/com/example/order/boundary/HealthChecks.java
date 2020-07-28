@@ -18,8 +18,7 @@ class HealthChecks {
 
     @Produces
     @Liveness
-        // @Readiness
-    HealthCheck check1() {
+    HealthCheck applicationInfoCheck() {
         return () -> HealthCheckResponse.named("app-backend")
                 .up()
                 .withData("stage", System.getProperty("stage", "undefined"))
