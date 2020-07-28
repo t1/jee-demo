@@ -1,0 +1,25 @@
+embed-server
+batch
+    # system properties
+    /system-property=stage:add(value=local) 
+
+    # data source
+    /subsystem=datasources/jdbc-driver=postgres:add(driver-module-name=org.postgresql,driver-name=postgres)
+    /subsystem=datasources/data-source=orders:add(driver-name=postgres,jndi-name=java:jboss/datasources/ordersDS,connection-url=jdbc:postgresql://postgres_db:5432/orders,min-pool-size=1,max-pool-size=5,user-name=jee,password=jee)
+
+
+    # logging
+    /subsystem=logging/console-handler=CONSOLE:write-attribute(name=level,value=ALL)
+    /subsystem=logging/logger=com.github.t1:add(level=DEBUG)
+    /subsystem=logging/logger=io.smallrye.graphql:add(level=DEBUG)
+    /subsystem=logging/logger=io.jaegertracing.Configuration:write-attribute(name=level,value=INFO)
+
+    # openapi
+    /extension=org.wildfly.extension.microprofile.openapi-smallrye:add()
+    /subsystem=microprofile-openapi-smallrye:add()
+
+    # opentracing
+    /socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=jaeger:add(host=localhost, port=6831)
+    /subsystem=microprofile-opentracing-smallrye/jaeger-tracer=jaeger-demo:add(sampler-type=const, sampler-param=1, reporter-log-spans=true, sender-bindi ng=jaeger)
+run-batch
+quit

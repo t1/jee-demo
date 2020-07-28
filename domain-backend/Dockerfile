@@ -6,4 +6,7 @@ RUN rm -r \
     /opt/jboss/jboss-setup.cli \
     ${JBOSS_HOME}/standalone/configuration/standalone_xml_history
 
-COPY target/app-backend.war ${JBOSS_HOME}/standalone/deployments/
+# add modules
+COPY modules $JBOSS_HOME/modules
+
+# COPY target/app-backend.war ${JBOSS_HOME}/standalone/deployments/
