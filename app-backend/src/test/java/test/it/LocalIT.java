@@ -1,15 +1,8 @@
 package test.it;
 
-import static javax.ws.rs.core.MediaType.APPLICATION_JSON_TYPE;
-import static org.assertj.core.api.BDDAssertions.then;
-
-import javax.json.bind.JsonbBuilder;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
-
-import org.junit.jupiter.api.Test;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

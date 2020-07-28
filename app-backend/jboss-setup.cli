@@ -1,5 +1,6 @@
 embed-server
 batch
     /system-property=stage:add(value=local)
+    /subsystem=logging/logger=io.jaegertracing.Configuration:write-attribute(name=level,value=INFO)
 run-batch
 quit
