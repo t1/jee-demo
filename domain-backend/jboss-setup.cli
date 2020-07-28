@@ -3,7 +3,10 @@ batch
     # system properties
     /system-property=stage:add(value=local) 
 
-    # data source
+
+    # data sources
+    /subsystem=datasources/data-source=ExampleDS:remove
+    /subsystem=datasources/jdbc-driver=h2:remove
     /subsystem=datasources/jdbc-driver=postgres:add(driver-module-name=org.postgresql,driver-name=postgres)
     /subsystem=datasources/data-source=orders:add(driver-name=postgres,jndi-name=java:jboss/datasources/ordersDS,connection-url=jdbc:postgresql://postgres_db:5432/orders,min-pool-size=1,max-pool-size=5,user-name=jee,password=jee)
 
@@ -14,9 +17,11 @@ batch
     /subsystem=logging/logger=io.smallrye.graphql:add(level=DEBUG)
     /subsystem=logging/logger=io.jaegertracing.Configuration:write-attribute(name=level,value=INFO)
 
+
     # openapi
     /extension=org.wildfly.extension.microprofile.openapi-smallrye:add()
     /subsystem=microprofile-openapi-smallrye:add()
+
 
     # opentracing
     /socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=jaeger:add(host=jee-demo_jaeger_1, port=6831)
