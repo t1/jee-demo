@@ -12,7 +12,7 @@ batch
     /subsystem=datasources/data-source=orders:add( \
         driver-name=postgres,\
         jndi-name=java:jboss/datasources/ordersDS,\
-        connection-url=jdbc:postgresql://postgres_db:5432/orders,\
+        connection-url=jdbc:postgresql://db:5432/orders,\
         min-pool-size=1,\
         max-pool-size=5,\
         user-name=jee,\
