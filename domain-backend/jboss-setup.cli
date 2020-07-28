@@ -21,5 +21,6 @@ batch
     # opentracing
     /socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=jaeger:add(host=jee-demo_jaeger_1, port=6831)
     /subsystem=microprofile-opentracing-smallrye/jaeger-tracer=jaeger-demo:add(sampler-type=const, sampler-param=1, reporter-log-spans=true, sender-bindi ng=jaeger)
+    /subsystem=microprofile-opentracing-smallrye:write-attribute(name=default-tracer, value=jaeger-demo)
 run-batch
 quit
