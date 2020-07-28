@@ -1,6 +1,20 @@
 embed-server
 batch
+    # system properties
     /system-property=stage:add(value=local)
+
+    # logging
+    /subsystem=logging/console-handler=CONSOLE:write-attribute(name=level,value=ALL)
+    /subsystem=logging/logger=com.github.t1:add(level=DEBUG)
+    /subsystem=logging/logger=io.smallrye.graphql:add(level=DEBUG)
     /subsystem=logging/logger=io.jaegertracing.Configuration:write-attribute(name=level,value=INFO)
+
+    # openapi
+    /extension=org.wildfly.extension.microprofile.openapi-smallrye:add()
+    /subsystem=microprofile-openapi-smallrye:add()
+
+    # opentracing
+    /socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=jaeger:add(host=localhost, port=6831)
+    /subsystem=microprofile-opentracing-smallrye/jaeger-tracer=jaeger-demo:add(sampler-type=const, sampler-param=1, reporter-log-spans=true, sender-bindi ng=jaeger)
 run-batch
 quit
