@@ -16,7 +16,9 @@ Start docker-compose:
 jdbc to postgres db
 jdbc:postgresql://127.0.0.1:5432/orders
 
-
+## Admin login for wildfly 20
+ user admin 
+ password Admin#007
 
 ## Jaeger and ELK:
 https://medium.com/jaegertracing/jaeger-elasticsearch-and-kibana-7ecb846137b6
