@@ -16,7 +16,7 @@ class LocalIT extends AbstractIT {
     private static final Client CLIENT = ClientBuilder.newClient();
 
     @Override WebTarget target() {
-        return CLIENT.target("http://localhost:8080/app-backend");
+        return CLIENT.target("http://localhost:8080/domain-backend");
     }
 
     @Override WebTarget management() {
