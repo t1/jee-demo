@@ -1,7 +1,7 @@
-version: "3"
+version: "3.8"
 
 services:
-  postgres:
+  db:
     image: postgres
     container_name: postgres_db
     environment:
@@ -18,7 +18,7 @@ services:
   domain-backend:
     build: ./domain-backend
     depends_on:
-      - postgres
+      - db
     environment:
       DEBUG: ""
       SKIP_DB_CONFIG: "true"

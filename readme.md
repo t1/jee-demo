@@ -12,6 +12,9 @@ Start docker-compose:
 
 `docker-compose up --build`
 
+Magic command to start only the backends and db and remove everything after shutdown (note as of docker-compose 3.8: for starting it would be sufficient to specify only `app-backend`, but when stopping, the other images are not stopped):
+
+`docker-compose up --build app-backend domain-backend db && docker system prune --force && docker ps -a`
 
 jdbc to postgres db
 jdbc:postgresql://127.0.0.1:5432/orders
