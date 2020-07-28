@@ -1,17 +1,28 @@
 package com.example.order.gateway;
 
+import static javax.ws.rs.core.Response.Status.BAD_GATEWAY;
+import static javax.ws.rs.core.Response.Status.Family.SERVER_ERROR;
+
+import javax.inject.Inject;
+import javax.ws.rs.ServerErrorException;
+import javax.ws.rs.WebApplicationException;
+
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+
 import com.example.order.domain.Order;
-import com.example.order.domain.OrderItem;
 import com.example.order.domain.OrderRepository;
-import com.example.order.domain.Person;
 
 public class OrderGateway implements OrderRepository {
+    @Inject @RestClient
+    OrderDomainService service;
+
     @Override public Order getOrderById(String orderId) {
-        return Order.builder()
-                .id(orderId)
-                .customer(Person.builder().name("Jane Doe").build())
-                .item(OrderItem.builder().count(3).product("Lord Of The Rings").pieceCostInCent(1234).build())
-                .item(OrderItem.builder().count(1).product("The Hobbit").pieceCostInCent(1150).build())
-                .build();
+        try {
+            return service.getOrderById(orderId);
+        } catch (WebApplicationException e) {
+            if (e.getResponse().getStatusInfo().getFamily().equals(SERVER_ERROR))
+                throw new ServerErrorException("failed call to order-domain service", BAD_GATEWAY, e);
+            throw e;
+        }
     }
 }
