@@ -19,7 +19,7 @@ CREATE TABLE orders.person
   name  VARCHAR NOT NULL
 );
 
-CREATE TABLE orders.order
+CREATE TABLE orders.orders
 (
   id BIGSERIAL PRIMARY KEY,
   orderDate TIMESTAMP NOT NULL,
@@ -36,5 +36,5 @@ CREATE TABLE orders.order_item
   product VARCHAR,
   piece_cost_in_cent INT,
 
-  FOREIGN KEY (order_id) REFERENCES orders.order (id)
+  FOREIGN KEY (order_id) REFERENCES orders.orders (id)
 );

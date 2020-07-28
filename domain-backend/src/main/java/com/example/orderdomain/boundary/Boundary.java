@@ -11,6 +11,6 @@ import org.eclipse.microprofile.opentracing.Traced;
 
 @Retention(RUNTIME)
 @Stereotype
-@Timed
+// @Timed
 @Traced
 public @interface Boundary {}

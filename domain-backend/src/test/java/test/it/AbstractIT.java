@@ -22,7 +22,7 @@ abstract class AbstractIT {
         Order order = GET(request, Order.class);
 
         then(order).usingRecursiveComparison().isEqualTo(Order.builder()
-                .id("1")
+                .id(1)
                 .customer(Person.builder()
                         .name("Jane Doe")
                         .build())

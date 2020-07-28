@@ -17,7 +17,7 @@ public class OrderBoundary {
     OrderRepository repository;
 
     @GET @Path("/{orderId}")
-    public Order getOrder(@PathParam("orderId") String orderId) {
+    public Order getOrder(@PathParam("orderId") long orderId) {
         return repository.getOrderById(orderId);
     }
 }
