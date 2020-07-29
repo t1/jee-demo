@@ -23,6 +23,14 @@ jdbc:postgresql://127.0.0.1:5432/orders
  user admin 
  password Admin#007
 
+## Health and Config
+
+all: http://localhost:9990/health
+ready: http://localhost:9990/health/ready
+live: http://localhost:9990/health/live
+
+Contains `stage` from system property and `version` from Maven resource filtering MP Config.
+
 ## Jaeger and ELK:
 https://medium.com/jaegertracing/jaeger-elasticsearch-and-kibana-7ecb846137b6
 Jaeger GUI: http://localhost:16686/search
@@ -49,7 +57,7 @@ A business metric is `application_com_example_orderdomain_boundary_OrderBoundary
 
 The `@Timed` annotation should be on the `@Boundary` stereotype, but there's a bug in WildFly 20.0.1, so it's now directly on the boundaries.
 
-## test calls
+## Test Calls
 http://localhost:8080/app-backend/orders/1
 
 http://localhost:8080/app-backend/timeout
