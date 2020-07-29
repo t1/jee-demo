@@ -25,3 +25,5 @@ CREATE TABLE order_item(
 
 insert into person (name) values ('Jane Doe');
 insert into orders (orderdate, customer_id) values (now(), 1);
+insert into order_item (order_id, count, product, piece_cost_in_cent) values (1, 3, 'Foobar', 1234);
+insert into order_item (order_id, count, product, piece_cost_in_cent) values (1, 2, 'Bazzing', 5678);

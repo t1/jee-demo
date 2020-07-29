@@ -1,5 +1,6 @@
 package com.example.orderdomain.domain;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,6 +22,7 @@ public class OrderItem {
 
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
+    @JsonbTransient // prevent recursion
     Order order;
 
     private int count;
