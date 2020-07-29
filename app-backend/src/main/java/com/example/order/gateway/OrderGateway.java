@@ -12,7 +12,7 @@ import com.example.order.domain.OrderRepository;
 
 public class OrderGateway implements OrderRepository {
     @Inject
-    OrderDomainService service;
+    DomainBackend service;
 
     @Override public Order getOrderById(String orderId) {
         try {
