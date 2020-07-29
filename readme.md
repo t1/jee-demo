@@ -47,6 +47,8 @@ Technical metric are `application_com_example_orderdomain_boundary_OrderBoundary
 
 A business metric is `application_com_example_orderdomain_boundary_OrderBoundary_get_order_total`
 
+The `@Timed` annotation should be on the `@Boundary` stereotype, but there's a bug in WildFly 20.0.1, so it's now directly on the boundaries.
+
 ## test calls
 http://localhost:8080/app-backend/orders/1
 
