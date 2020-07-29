@@ -16,6 +16,7 @@ services:
 
   domain-backend:
     build: ./domain-backend
+    container_name: domain-backend-local
     depends_on:
       - db
     environment:

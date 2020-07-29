@@ -16,12 +16,16 @@ class HealthChecks {
     @ConfigProperty
     String version;
 
+    @Inject
+    @ConfigProperty(name = "stage")
+    String stage;
+
     @Produces
     @Liveness
     HealthCheck applicationInfoCheck() {
         return () -> HealthCheckResponse.named("app-backend")
                 .up()
-                .withData("stage", System.getProperty("stage", "undefined"))
+                .withData("stage", stage)
                 .withData("version", version)
                 .build();
     }

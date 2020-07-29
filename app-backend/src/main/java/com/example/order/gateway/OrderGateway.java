@@ -7,13 +7,11 @@ import javax.inject.Inject;
 import javax.ws.rs.ServerErrorException;
 import javax.ws.rs.WebApplicationException;
 
-import org.eclipse.microprofile.rest.client.inject.RestClient;
-
 import com.example.order.domain.Order;
 import com.example.order.domain.OrderRepository;
 
 public class OrderGateway implements OrderRepository {
-    @Inject @RestClient
+    @Inject
     OrderDomainService service;
 
     @Override public Order getOrderById(String orderId) {
