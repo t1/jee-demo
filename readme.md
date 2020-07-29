@@ -52,6 +52,7 @@ Contains `stage` from system property and `version` from Maven resource filterin
 https://medium.com/jaegertracing/jaeger-elasticsearch-and-kibana-7ecb846137b6
 
 Jaeger GUI: http://localhost:16686/search
+
 Kibana: http://localhost:5601
 
 
