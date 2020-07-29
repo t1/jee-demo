@@ -19,11 +19,13 @@ public class DomainBackendProducer {
 
     @Produces
     DomainBackend produceOrderDomainService() {
-        URI baseUri = ConfigProvider.getConfig().getOptionalValue(DomainBackend.class.getName() + "/mp-rest/url", URI.class)
+        URI baseUri = ConfigProvider.getConfig().getOptionalValue(MP_REST_CLIENT_CONFIG_KEY, URI.class)
                 .orElseGet(() -> URI.create("http://domain-backend-" + stage + ":8080/domain-backend"));
         log.info("produce DomainBackend rest client for {}", baseUri);
         return RestClientBuilder.newBuilder()
                 .baseUri(baseUri)
                 .build(DomainBackend.class);
     }
+
+    public static final String MP_REST_CLIENT_CONFIG_KEY = DomainBackend.class.getName() + "/mp-rest/url";
 }

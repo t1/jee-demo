@@ -3,6 +3,8 @@ package test.it;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON_TYPE;
 import static org.assertj.core.api.BDDAssertions.then;
 
+import java.time.LocalDate;
+
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 import javax.ws.rs.client.Invocation;
@@ -23,18 +25,22 @@ abstract class AbstractIT {
 
         then(order).usingRecursiveComparison().isEqualTo(Order.builder()
                 .id(1)
+                .orderDate(LocalDate.now())
                 .customer(Person.builder()
+                        .id(1)
                         .name("Jane Doe")
                         .build())
                 .item(OrderItem.builder()
+                        .id(1)
                         .count(3)
+                        .product("Foobar")
                         .pieceCostInCent(1234)
-                        .product("Lord Of The Rings")
                         .build())
                 .item(OrderItem.builder()
-                        .count(1)
-                        .pieceCostInCent(1150)
-                        .product("The Hobbit")
+                        .id(2)
+                        .count(2)
+                        .product("Bazzing")
+                        .pieceCostInCent(5678)
                         .build())
                 .build());
     }
