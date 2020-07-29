@@ -26,7 +26,6 @@ public class RestInterceptor implements ContainerRequestFilter, ContainerRespons
     @Context
     ResourceInfo resourceInfo;
 
-
     @Override
     public void filter(ContainerRequestContext requestContext) {
         tracer.activeSpan().log(""
@@ -40,6 +39,7 @@ public class RestInterceptor implements ContainerRequestFilter, ContainerRespons
         Principal principal = requestContext.getSecurityContext().getUserPrincipal();
         return (principal == null) ? "unknown" : principal.getName();
     }
+
     private String getEntityBody(ContainerRequestContext requestContext) {
         if (isJson(requestContext)) {
             try (Scanner scanner = new Scanner(requestContext.getEntityStream(), UTF_8).useDelimiter("\\Z")) {
@@ -50,7 +50,7 @@ public class RestInterceptor implements ContainerRequestFilter, ContainerRespons
     }
 
     boolean isJson(ContainerRequestContext request) {
-        return request.getMediaType().isCompatible(APPLICATION_JSON_TYPE);
+        return APPLICATION_JSON_TYPE.isCompatible(request.getMediaType());
     }
 
     @Override
