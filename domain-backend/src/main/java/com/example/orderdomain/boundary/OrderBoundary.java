@@ -27,7 +27,9 @@ public class OrderBoundary {
     @GET @Path("/{orderId}")
     public Order getOrder(@PathParam("orderId") long orderId) {
         Tag tag = new Tag("orderId", Long.toString(orderId));
-        metrics.counter(MetricRegistry.name(OrderBoundary.class, "get-order"), tag).inc();
+        metrics.counter(ORDER_ID_COUNTER, tag).inc();
         return repository.getOrderById(orderId);
     }
+
+    private static final String ORDER_ID_COUNTER = MetricRegistry.name(OrderBoundary.class, "get-order");
 }
