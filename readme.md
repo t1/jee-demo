@@ -37,3 +37,11 @@ $ docker run --rm -it --link=elasticsearch --name=kibana -p 5601:5601 docker.ela
 $ docker run --rm -it --link=elasticsearch --name=jaeger -e SPAN_STORAGE_TYPE=elasticsearch -e ES_SERVER_URLS=http://elasticsearch:9200 -e ES_TAGS_AS_FIELDS_ALL=true -p 16686:16686 jaegertracing/all-in-one:1.7
 
 $ docker run --rm -it --link=jaeger -p 8080-8083:8080-8083 jaegertracing/example-hotrod:1.7 all --jaeger-agent.host-port=jaeger:6831
+
+## test calls
+http://localhost:8080/app-backend/orders/1
+
+http://localhost:8080/app-backend/timeout
+http://localhost:8080/app-backend/timeoutRetry
+http://localhost:8080/app-backend/timeoutFallback
+http://localhost:8080/app-backend/circuitBreak
