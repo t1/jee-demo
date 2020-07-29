@@ -29,10 +29,10 @@ public class RestInterceptor implements ContainerRequestFilter, ContainerRespons
     @Override
     public void filter(ContainerRequestContext requestContext) {
         tracer.activeSpan().log(""
-                + "User: " + userName(requestContext)
-                + " - Path: " + requestContext.getUriInfo().getPath()
-                + " - Header: " + requestContext.getHeaders()
-                + " - Entity: " + getEntityBody(requestContext));
+                + "User: " + userName(requestContext) + "\n"
+                + " - Path: " + requestContext.getUriInfo().getPath() + "\n"
+                + " - Header: " + requestContext.getHeaders() + "\n" // TODO don't log, e.g., Authorization headers
+                + " - Entity: " + getEntityBody(requestContext)); // TODO some bodies shouldn't be logged, either
     }
 
     private String userName(ContainerRequestContext requestContext) {
@@ -56,7 +56,7 @@ public class RestInterceptor implements ContainerRequestFilter, ContainerRespons
     @Override
     public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) {
         tracer.activeSpan().log(""
-                + "Header: " + responseContext.getHeaders()
+                + "Header: " + responseContext.getHeaders() + "\n"
                 + " - Entity: " + responseContext.getEntity());
     }
 }
