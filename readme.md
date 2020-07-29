@@ -1,12 +1,11 @@
-Demo project for distributed tracing
+# Demo Project
 
 contains:
-- docker-compose.yml
-- app-backend 
-- domain application
+- app-backend: would be a Backend-For-Frontend to gateway frontend requests to the domain backends
+- domain-backend: domain/business logic plus persistence layer
 
 
-## Docker images
+## Docker
 
 Start docker-compose:
 
@@ -19,9 +18,25 @@ Magic command to start only the backends and db and remove everything after shut
 jdbc to postgres db
 jdbc:postgresql://127.0.0.1:5432/orders
 
-## Admin login for wildfly 20
+
+## WildFly Admin Console
+
+`app-backend`: http://localhost:9990/console/index.html
+
+`domain-backend`: http://localhost:9991/console/index.html
+
  user admin 
  password Admin#007
+
+
+## Test Calls
+
+`app-backend`: http://localhost:8080/app-backend/orders/1
+
+`domain-backend`: http://localhost:8081/domain-backend/orders/1
+
+The `app-backend` uses MP Rest Client to access the `domain-backend`.
+
 
 ## Health and Config
 
@@ -31,11 +46,13 @@ live: http://localhost:9990/health/live
 
 Contains `stage` from system property and `version` from Maven resource filtering MP Config.
 
+
 ## Jaeger and ELK:
+
 https://medium.com/jaegertracing/jaeger-elasticsearch-and-kibana-7ecb846137b6
+
 Jaeger GUI: http://localhost:16686/search
 Kibana: http://localhost:5601
-Demo: http://localhost:8080/
 
 
 $ docker run --rm -it --name=elasticsearch -e "ES_JAVA_OPTS=-Xms2g -Xmx2g" -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e "xpack.security.enabled=false" docker.elastic.co/elasticsearch/elasticsearch:5.6.10
@@ -51,16 +68,19 @@ $ docker run --rm -it --link=jaeger -p 8080-8083:8080-8083 jaegertracing/example
 
 Prometheus-UI runs on http://localhost:9090/graph
 
-Technical metric are `application_com_example_orderdomain_boundary_OrderBoundary_getOrder_one_min_rate_per_second` or `vendor_memoryPool_G1_Old_Gen_usage_bytes`
+Technical metrics, e.g. `application_com_example_orderdomain_boundary_OrderBoundary_getOrder_one_min_rate_per_second` or `vendor_memoryPool_G1_Old_Gen_usage_bytes`
 
-A business metric is `application_com_example_orderdomain_boundary_OrderBoundary_get_order_total`
+A business metric, e.g. `application_com_example_orderdomain_boundary_OrderBoundary_get_order_total` from the domain-backend OrderBoundary.
 
-The `@Timed` annotation should be on the `@Boundary` stereotype, but there's a bug in WildFly 20.0.1, so it's now directly on the boundaries.
+Note: the `@Timed` annotation should be on the `@Boundary` stereotype, but there's a bug in WildFly 20.0.1, so it's currently directly on the boundaries.
 
-## Test Calls
-http://localhost:8080/app-backend/orders/1
+
+## Fault Tolerance
 
 http://localhost:8080/app-backend/timeout
+
 http://localhost:8080/app-backend/timeoutRetry
+
 http://localhost:8080/app-backend/timeoutFallback
+
 http://localhost:8080/app-backend/circuitBreak
