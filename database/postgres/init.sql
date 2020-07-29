@@ -22,3 +22,6 @@ CREATE TABLE order_item(
 
   FOREIGN KEY (order_id) REFERENCES orders (id)
 );
+
+insert into person (name) values ('Jane Doe');
+insert into orders (orderdate, customer_id) values (now(), 1);
