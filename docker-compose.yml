@@ -89,6 +89,13 @@ services:
     networks:
       - jee-demo-network
 
+  prometheus:
+    build: ./prometheus
+    ports:
+    - "9090:9090"
+    networks:
+    - jee-demo-network
+
 networks:
   jee-demo-network:
     driver: bridge

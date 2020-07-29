@@ -38,6 +38,15 @@ $ docker run --rm -it --link=elasticsearch --name=jaeger -e SPAN_STORAGE_TYPE=el
 
 $ docker run --rm -it --link=jaeger -p 8080-8083:8080-8083 jaegertracing/example-hotrod:1.7 all --jaeger-agent.host-port=jaeger:6831
 
+
+## Metrics
+
+Prometheus-UI runs on http://localhost:9090/graph
+
+Technical metric are `application_com_example_orderdomain_boundary_OrderBoundary_getOrder_one_min_rate_per_second` or `vendor_memoryPool_G1_Old_Gen_usage_bytes`
+
+A business metric is `application_com_example_orderdomain_boundary_OrderBoundary_get_order_total`
+
 ## test calls
 http://localhost:8080/app-backend/orders/1
 
