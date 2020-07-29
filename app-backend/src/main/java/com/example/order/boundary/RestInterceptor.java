@@ -4,7 +4,6 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON_TYPE;
 
 import java.security.Principal;
-import java.util.Optional;
 import java.util.Scanner;
 
 import javax.inject.Inject;
@@ -27,20 +26,20 @@ public class RestInterceptor implements ContainerRequestFilter, ContainerRespons
     @Context
     ResourceInfo resourceInfo;
 
-    public RestInterceptor() {
-
-    }
 
     @Override
     public void filter(ContainerRequestContext requestContext) {
         tracer.activeSpan().log(""
-                + "User: " + Optional.ofNullable(requestContext.getSecurityContext().getUserPrincipal())
-                .map(Principal::getName).orElse("unknown")
+                + "User: " + userName(requestContext)
                 + " - Path: " + requestContext.getUriInfo().getPath()
                 + " - Header: " + requestContext.getHeaders()
                 + " - Entity: " + getEntityBody(requestContext));
     }
 
+    private String userName(ContainerRequestContext requestContext) {
+        Principal principal = requestContext.getSecurityContext().getUserPrincipal();
+        return (principal == null) ? "unknown" : principal.getName();
+    }
     private String getEntityBody(ContainerRequestContext requestContext) {
         if (isJson(requestContext)) {
             try (Scanner scanner = new Scanner(requestContext.getEntityStream(), UTF_8).useDelimiter("\\Z")) {
