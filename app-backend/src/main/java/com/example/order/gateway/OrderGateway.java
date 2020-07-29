@@ -14,8 +14,9 @@ import com.example.order.domain.Order;
 import com.example.order.domain.OrderRepository;
 
 public class OrderGateway implements OrderRepository {
+
 	@Inject
-	OrderDomainService service;
+	DomainBackend service;
 
 	@Inject
 	Tracer tracer;
