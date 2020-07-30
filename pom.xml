@@ -23,7 +23,7 @@
         <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
 
-        <resteasy.version>4.4.2.Final</resteasy.version>
+        <resteasy.version>4.5.6.Final</resteasy.version>
         <testcontainers.version>1.14.3</testcontainers.version>
     </properties>
 
@@ -157,7 +157,7 @@
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>
-            <version>2.7.5</version>
+            <version>2.7.7</version>
             <scope>test</scope>
         </dependency>
         <dependency>

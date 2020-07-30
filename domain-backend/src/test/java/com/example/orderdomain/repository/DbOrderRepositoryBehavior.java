@@ -15,7 +15,7 @@ import com.example.orderdomain.domain.Order;
 
 class DbOrderRepositoryBehavior {
     private static final EntityManager ENTITY_MANAGER = Persistence
-            .createEntityManagerFactory("orders")
+            .createEntityManagerFactory("orders-test")
             .createEntityManager();
 
     private final DbOrderRepository repository = new DbOrderRepository();
