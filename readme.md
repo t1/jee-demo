@@ -85,3 +85,5 @@ http://localhost:8080/frontend/timeoutRetry
 http://localhost:8080/frontend/timeoutFallback
 
 http://localhost:8080/frontend/circuitBreak
+
+Prometheus: `application_ft_com_example_frontend_boundary_OrderBoundary_breakCircuit_circuitbreaker_callsFailed_total`
