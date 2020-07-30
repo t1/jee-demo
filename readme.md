@@ -40,6 +40,12 @@ The `frontend` uses MP Rest Client to access the `backend`.
 
 ## Health and Config
 
+Spec:
+  Health: https://download.eclipse.org/microprofile/microprofile-health-2.2/microprofile-health-spec.html
+  Config: https://download.eclipse.org/microprofile/microprofile-config-1.4/microprofile-config-spec.html
+
+
+
 all: http://localhost:9990/health
 ready: http://localhost:9990/health/ready
 live: http://localhost:9990/health/live
@@ -48,6 +54,9 @@ Contains `stage` from system property and `version` from Maven resource filterin
 
 
 ## Metrics
+
+Spec: https://download.eclipse.org/microprofile/microprofile-metrics-2.3.2/microprofile-metrics-spec-2.3.2.html
+
 
 Prometheus-UI runs on http://localhost:9090/graph
 
@@ -58,7 +67,10 @@ A business metric, e.g. `application_com_example_backend_boundary_OrderBoundary_
 Note: the `@Timed` annotation should be on the `@Boundary` stereotype, but there's a bug in WildFly 20.0.1, so it's currently directly on the boundaries.
 
 
-## Jaeger and ELK:
+## Tracing
+
+Spec: https://download.eclipse.org/microprofile/microprofile-opentracing-1.3.3/microprofile-opentracing-spec-1.3.3.html
+
 
 https://medium.com/jaegertracing/jaeger-elasticsearch-and-kibana-7ecb846137b6
 
@@ -77,6 +89,9 @@ $ docker run --rm -it --link=jaeger -p 8080-8083:8080-8083 jaegertracing/example
 
 
 ## Fault Tolerance
+
+Spec: https://download.eclipse.org/microprofile/microprofile-fault-tolerance-2.1.1/microprofile-fault-tolerance-spec.html
+
 
 http://localhost:8080/frontend/timeout
 
