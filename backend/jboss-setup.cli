@@ -31,6 +31,7 @@ batch
     /extension=org.wildfly.extension.microprofile.openapi-smallrye:add()
     /subsystem=microprofile-openapi-smallrye:add()
 
+
     # fault-tolerance
     /extension=org.wildfly.extension.microprofile.fault-tolerance-smallrye:add
     /subsystem=microprofile-fault-tolerance-smallrye:add
@@ -40,5 +41,13 @@ batch
     /socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=jaeger:add(host=jee-demo_jaeger_1, port=6831)
     /subsystem=microprofile-opentracing-smallrye/jaeger-tracer=jaeger-demo:add(sampler-type=const, sampler-param=1, reporter-log-spans=true, sender-bindi ng=jaeger)
     /subsystem=microprofile-opentracing-smallrye:write-attribute(name=default-tracer, value=jaeger-demo)
+
+
+    # more metrics
+    /subsystem=ejb3:write-attribute(name=statistics-enabled,value=true)
+    /subsystem=datasources/data-source=orders:write-attribute(name=statistics-enabled,value=true)
+    /subsystem=transactions:write-attribute(name=statistics-enabled,value=true)
+    /subsystem=undertow:write-attribute(name=statistics-enabled,value=true)
+    /subsystem=webservices:write-attribute(name=statistics-enabled,value=true)
 run-batch
 quit
