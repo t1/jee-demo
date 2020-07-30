@@ -12,9 +12,9 @@ import javax.ws.rs.client.WebTarget;
 
 import org.junit.jupiter.api.Test;
 
-import com.example.order.domain.Order;
-import com.example.order.domain.OrderItem;
-import com.example.order.domain.Person;
+import com.example.frontend.domain.Order;
+import com.example.frontend.domain.OrderItem;
+import com.example.frontend.domain.Person;
 import test.it.LocalIT.Health;
 
 abstract class AbstractIT {

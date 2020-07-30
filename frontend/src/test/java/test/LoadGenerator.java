@@ -6,7 +6,7 @@ import javax.json.bind.JsonbBuilder;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 
-import com.example.order.domain.Order;
+import com.example.frontend.domain.Order;
 
 public class LoadGenerator implements Runnable {
     public static void main(String... args) {

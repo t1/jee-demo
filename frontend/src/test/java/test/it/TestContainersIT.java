@@ -1,6 +1,6 @@
 package test.it;
 
-import static com.example.order.gateway.DomainBackendProducer.MP_REST_CLIENT_CONFIG_KEY;
+import static com.example.frontend.gateway.DomainBackendProducer.MP_REST_CLIENT_CONFIG_KEY;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 import javax.ws.rs.client.WebTarget;

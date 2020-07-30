@@ -51,9 +51,9 @@ Contains `stage` from system property and `version` from Maven resource filterin
 
 Prometheus-UI runs on http://localhost:9090/graph
 
-Technical metrics, e.g. `application_com_example_orderdomain_boundary_OrderBoundary_getOrder_one_min_rate_per_second` or `vendor_memoryPool_G1_Old_Gen_usage_bytes`
+Technical metrics, e.g. `application_com_example_frontend_boundary_OrderBoundary_OrderBoundary_one_min_rate_per_second` or `base_cpu_processCpuLoad`
 
-A business metric, e.g. `application_com_example_orderdomain_boundary_OrderBoundary_get_order_total` from the backend OrderBoundary.
+A business metric, e.g. `application_com_example_backend_boundary_OrderBoundary_get_order_total` from the backend OrderBoundary.
 
 Note: the `@Timed` annotation should be on the `@Boundary` stereotype, but there's a bug in WildFly 20.0.1, so it's currently directly on the boundaries.
 
