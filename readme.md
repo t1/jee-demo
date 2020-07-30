@@ -11,7 +11,7 @@ Start docker-compose:
 
 `docker-compose up --build`
 
-Magic command to start only the backends and db and remove everything after shutdown (note as of docker-compose 3.8: for starting it would be sufficient to specify only `frontend`, but when stopping, the other images are not stopped):
+Magic command to start only the backends and db and remove everything after the shutdown (note as of docker-compose 3.8: for starting it would be sufficient to specify only `frontend`, but when stopping, the other images are not stopped):
 
 `docker-compose up --build frontend backend db && docker system prune --force && docker ps -a`
 
@@ -51,7 +51,7 @@ Contains `stage` from system property and `version` from Maven resource filterin
 
 Prometheus-UI runs on http://localhost:9090/graph
 
-Technical metrics, e.g. `application_com_example_frontend_boundary_OrderBoundary_OrderBoundary_one_min_rate_per_second` or `base_cpu_processCpuLoad`
+Technical metrics, e.g. `base_cpu_processCpuLoad` or `application_com_example_frontend_boundary_OrderBoundary_OrderBoundary_one_min_rate_per_second`
 
 A business metric, e.g. `application_com_example_backend_boundary_OrderBoundary_get_order_total` from the backend OrderBoundary.
 
