@@ -11,8 +11,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>app-backend</module>
-        <module>domain-backend</module>
+        <module>frontend</module>
+        <module>backend</module>
     </modules>
 
     <properties>

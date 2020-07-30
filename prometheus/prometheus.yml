@@ -19,10 +19,10 @@ scrape_configs:
 #  static_configs:
 #  - targets: ['localhost:9090']
 
-- job_name: 'app-backend'
+- job_name: 'frontend'
   static_configs:
-  - targets: ['app-backend:9990']
+  - targets: ['frontend:9990']
 
-- job_name: 'domain-backend'
+- job_name: 'backend'
   static_configs:
-  - targets: ['domain-backend:9990']
+  - targets: ['backend:9990']

@@ -14,9 +14,9 @@ services:
     networks:
       - jee-demo-network
 
-  domain-backend:
-    build: ./domain-backend
-    container_name: domain-backend-local
+  backend:
+    build: ./backend
+    container_name: backend-local
     depends_on:
       - db
     environment:
@@ -28,10 +28,10 @@ services:
     networks:
       - jee-demo-network
 
-  app-backend:
-    build: ./app-backend
+  frontend:
+    build: ./frontend
     depends_on:
-    - domain-backend
+    - backend
     ports:
       - "8080:8080"
       - "9990:9990"
