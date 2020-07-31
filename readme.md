@@ -37,6 +37,8 @@ jdbc:postgresql://127.0.0.1:5432/orders
 
 The `frontend` uses MP Rest Client to access the `backend`.
 
+The `frontend` URL also works in the browser and renders a html page.
+
 
 ## Health and Config
 
@@ -50,7 +52,10 @@ all: http://localhost:9990/health
 ready: http://localhost:9990/health/ready
 live: http://localhost:9990/health/live
 
-Contains `stage` from system property and `version` from Maven resource filtering MP Config.
+Health checks:
+- `stage` from system property
+- `version` from Maven resource filtering MP Config
+- `db` if the database is currently reachable
 
 
 ## Metrics
