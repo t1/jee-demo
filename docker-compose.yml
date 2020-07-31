@@ -45,6 +45,9 @@ services:
         ES_JAVA_OPTS: -Xms2g -Xmx2g
         discovery.type: single-node
         xpack.security.enabled: "false"
+    ports:
+      - "9200:9200"
+      - "9300:9300"
     networks:
       - jee-demo-network
 
@@ -58,6 +61,10 @@ services:
         ES_TAGS_AS_FIELDS_ALL: "true"
     ports:
       - "16686:16686"
+      - "5775:5775/udp"
+      - "6831:6831/udp"
+      - "6832:6832/udp"
+      - "5778:5778"
     restart: on-failure
     networks:
       - jee-demo-network
