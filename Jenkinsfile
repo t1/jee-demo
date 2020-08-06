@@ -16,7 +16,8 @@ pipeline {
                 // Run the maven build
                 script {
                     def mvnHome = getMavenHome()
-                    sh "'${mvnHome}/bin/mvn' clean package"
+                    def mvn = "${mvnHome}/bin/mvn "
+                    mvn "clean package"
                     junit '**/target/surefire-reports/TEST-*.xml'
                     archive 'target*//*.jar'
                 }
