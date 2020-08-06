@@ -15,7 +15,7 @@ pipeline {
             steps {
                 // Run the maven build
                 script {
-                    mvn.run "clean package"
+                    mvn "clean package"
                     junit '**/target/surefire-reports/TEST-*.xml'
                     archive 'target*//*.jar'
                 }
