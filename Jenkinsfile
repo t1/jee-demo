@@ -11,18 +11,6 @@ pipeline {
     }
 
     stages {
-        stage('Initialize variables') {
-            steps {
-                scmSkip(deleteBuild: true, skipPattern: '\\[maven-release-plugin\\].*')
-                script {
-                    sh 'git clean -ffxd'
-                    sh 'git fetch --tags --force'
-                    ARTIFACT_VERSION = sh(returnStdout: true, script: 'git tag --sort version:refname | tail -1').trim()
-                    echo 'Latest tag: ' + ARTIFACT_VERSION
-                }
-            }
-        }
-
         stage('Build with unit testing') {
             steps {
                 // Run the maven build
