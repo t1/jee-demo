@@ -11,20 +11,12 @@ pipeline {
     }
 
     stages {
-        stage('Build with unit testing') {
+        stage('Package') {
             steps {
                 // Run the maven build
                 script {
-                    // Get the Maven tool.
-                    // ** NOTE: This 'M3' Maven tool must be configured
-                    // **       in the global configuration.
-                    echo 'Pulling...' + env.BRANCH_NAME
                     def mvnHome = getMavenHome()
-                    def targetVersion = getDevVersion()
-                    print 'target build version...'
-                    print targetVersion
-                    sh "'${mvnHome}/bin/mvn' -Dintegration-tests.skip=true -Dbuild.number=${targetVersion} clean package ${KEYSTORE_GLOBALS}"
-                    // execute the unit testing and collect the reports
+                    sh "'${mvnHome}/bin/mvn' clean package"
                     junit '**/target/surefire-reports/TEST-*.xml'
                     archive 'target*//*.jar'
                 }
