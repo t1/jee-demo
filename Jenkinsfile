@@ -23,8 +23,3 @@ pipeline {
         }
     }
 }
-
-void mvn(String command) {
-    def mavenHome = tool('Maven 3.6.3')
-    sh "'${mavenHome}/bin/mvn' ${command}"
-}
