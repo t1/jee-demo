@@ -25,22 +25,6 @@ pipeline {
 }
 
 void mvn(String command) {
-    sh "'${getMavenHome()}/bin/mvn' ${command}"
-}
-
-def getMavenHome() {
-    return tool('Maven 3.6.3')
-}
-
-def getDevVersion() {
-    def gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
-    def versionNumber
-    if (gitCommit == null) {
-        versionNumber = env.BUILD_NUMBER
-    } else {
-        versionNumber = gitCommit.take(8)
-    }
-    print 'build  versions...'
-    print versionNumber
-    return versionNumber
+    def mavenHome = tool('Maven 3.6.3')
+    sh "'${mavenHome}/bin/mvn' ${command}"
 }
